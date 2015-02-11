@@ -34,7 +34,13 @@ class SiteController extends Controller
                         'roles' => ['@'],
                     ],
                 ],
-            ]
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'logout' => ['post'],
+                ],
+            ],
         ];
     }
 
@@ -54,5 +60,10 @@ class SiteController extends Controller
     {
         return $this->render('index');
     }
+	
+	public function actionCallback()
+	{
+		Yii::info("asd", 'callbackInfo');
+	}
 
 }

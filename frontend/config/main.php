@@ -23,6 +23,14 @@ return [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],
                 ],
+				[
+					'class' => 'yii\log\FileTarget',
+					'levels' => ['info'],
+					'categories' => ['callbackInfo'],
+					'logFile' => '@app/runtime/logs/callback.log',
+					'maxFileSize' => 1024 * 2,
+					'maxLogFiles' => 20,
+				],
             ],
         ],
         'errorHandler' => [

@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "93ba06c7f55c134fcfc2a4a38a89049e",
+    "hash": "c2e2d29720defca367e8d214a4abb891",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -211,7 +211,8 @@
             },
             "license": [
                 "MIT"
-            ]
+            ],
+            "time": "2015-01-22 20:06:42"
         },
         {
             "name": "cebe/markdown",
@@ -318,6 +319,90 @@
             "time": "2013-11-30 08:25:19"
         },
         {
+            "name": "sandeepshetty/shopify_api",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sandeepshetty/shopify_api.git",
+                "reference": "20956b20c879f64cacedaf029d40d6d188f97e5d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sandeepshetty/shopify_api/zipball/20956b20c879f64cacedaf029d40d6d188f97e5d",
+                "reference": "20956b20c879f64cacedaf029d40d6d188f97e5d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "sandeepshetty/wcurl": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "../wcurl/wcurl.php",
+                    "client.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sandeep Shetty",
+                    "email": "sandeep.shetty@gmail.com",
+                    "homepage": "http://sandeep.shetty.in",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Simple Shopify API client in PHP",
+            "homepage": "https://github.com/sandeepshetty/shopify_api",
+            "keywords": [
+                "api",
+                "shopify"
+            ],
+            "time": "2014-11-23 20:57:34"
+        },
+        {
+            "name": "sandeepshetty/wcurl",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sandeepshetty/wcurl.git",
+                "reference": "69e532773ca9306418101ca6c8edddd6c70d5427"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sandeepshetty/wcurl/zipball/69e532773ca9306418101ca6c8edddd6c70d5427",
+                "reference": "69e532773ca9306418101ca6c8edddd6c70d5427",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.0.0"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sandeep Shetty",
+                    "email": "sandeep.shetty@gmail.com",
+                    "homepage": "http://sandeep.shetty.in",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A convenience wrapper around PHP's cURL library",
+            "homepage": "https://github.com/sandeepshetty/wcurl",
+            "keywords": [
+                "api",
+                "curl",
+                "http"
+            ],
+            "time": "2013-04-07 01:00:07"
+        },
+        {
             "name": "swiftmailer/swiftmailer",
             "version": "dev-master",
             "source": {
@@ -375,12 +460,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "74234deab49638ef24b55a8ff5394339b613d9c4"
+                "reference": "9d86dc53777b8f2f3bfa719d6992f36fa2fce68c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/74234deab49638ef24b55a8ff5394339b613d9c4",
-                "reference": "74234deab49638ef24b55a8ff5394339b613d9c4",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/9d86dc53777b8f2f3bfa719d6992f36fa2fce68c",
+                "reference": "9d86dc53777b8f2f3bfa719d6992f36fa2fce68c",
                 "shasum": ""
             },
             "require": {
@@ -456,7 +541,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2015-02-09 15:11:39"
+            "time": "2015-02-10 01:33:05"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
@@ -907,7 +992,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "sandeepshetty/shopify_api": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
