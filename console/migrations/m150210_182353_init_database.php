@@ -53,7 +53,8 @@ class m150210_182353_init_database extends Migration
             'pipeliner_id' => Schema::TYPE_STRING . ' NOT NULL',
             'description'  => Schema::TYPE_STRING,
             'category_id'  => Schema::TYPE_INTEGER . ' NOT NULL',
-            'sku'          => Schema::TYPE_STRING . ' NOT NULL'
+            'sku'          => Schema::TYPE_STRING . ' NOT NULL',
+            'price'          => Schema::TYPE_STRING . ' NOT NULL'
             
         ),NULL,true);
         
@@ -81,7 +82,9 @@ class m150210_182353_init_database extends Migration
             'phone'  => Schema::TYPE_STRING,
             'region'  => Schema::TYPE_STRING,
             'country'  => Schema::TYPE_STRING,
-            'zip'          => Schema::TYPE_STRING
+            'zip'          => Schema::TYPE_STRING,
+            'company'          => Schema::TYPE_STRING,
+            'password'          => Schema::TYPE_STRING
             
         ),NULL,true);
     }

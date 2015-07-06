@@ -2,8 +2,8 @@
     <head>
     <script src="//cdn.shopify.com/s/assets/external/app.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/frontend/web/css/site.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://<?=$store_settings['app_url']?>/frontend/web/css/site.css">
     <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
     <script type="text/javascript">
           ShopifyApp.init({
@@ -17,11 +17,11 @@
             ShopifyApp.ready(function(){
                   ShopifyApp.Bar.initialize({
                     title: window.mainPageTitle,
-                    icon: "/frontend/web/favicon.ico"
+                    icon: "https://<?=$store_settings['app_url']?>/frontend/web/favicon.ico"
                   });
             });
             
-            document.domain = 'view-source.ru';
+            document.domain = 'apps.opsway.com';
             
             function hideMessages()
             {
@@ -53,7 +53,7 @@
                     showMessage('warning')
                     $.ajax({
                       'type'  :   'POST',
-                      'url'   :   'https://<?=$store_settings['app_url']?>/frontend/web/index.php?r=site/getfrompipeliner',
+                      'url'   :   'https://<?=$store_settings['app_url']?>/frontend/web/index.php?r=pipeliner/getdata',
                       'data'  :   {'store' : '<?=$user_settings['store_name']?>'},
                       'success'   : function(data)
                       {      
@@ -141,7 +141,7 @@
             </div> 
         </div>
         <div class="page-header clearfix">
-            <h1>Pipeliner Api Settings!</h1>
+            <h1>API settings</h1>
             <div class="page-description"></div>
             <button class="btn btn-shopify green sync" <?php
                 if(empty($user_settings['service_url']) || 
@@ -167,8 +167,8 @@
                   <input type="text" class="form-control" name="api_password" id="api_password" placeholder="Enter API Password" value="<?=(empty($user_settings['api_password']) ? "" : $user_settings['api_password'])?>">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Api Token</label>
-                  <input type="text" class="form-control" name="api_token" id="api_token" placeholder="Enter Api Token" value="<?=(empty($user_settings['api_token']) ? "" : $user_settings['api_token'])?>">
+                  <label for="exampleInputPassword1">API Token</label>
+                  <input type="text" class="form-control" name="api_token" id="api_token" placeholder="Enter API Token" value="<?=(empty($user_settings['api_token']) ? "" : $user_settings['api_token'])?>">
                 </div>
           </form>
       </div>

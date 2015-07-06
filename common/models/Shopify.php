@@ -29,7 +29,7 @@ class Shopify extends Baseapi
         if(is_null($this->shopify))
         {
             $app_settings = Appsettings::find()->one();
-            $user_settings = Usersettings::getByParams(['store_name' => $this->getstoreName()]);
+            $user_settings = Usersettings::getByParams(['store_name' => $this->getStoreName()]);
             $this->shopify = shopify_api\client(
                 $this->storeName, $user_settings['access_token'], $app_settings['api_key'], $app_settings['shared_secret']
             );
