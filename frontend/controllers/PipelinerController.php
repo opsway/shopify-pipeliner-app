@@ -11,7 +11,6 @@ use common\models\Pipeliner;
 use common\models\Shopify;
 use common\models\Collections;
 use common\models\Products;
-use common\models\Customers;
 
 /**
  * Site controller
@@ -250,7 +249,7 @@ class PipelinerController extends Controller
             $customer->country		=	$account->getCountry();
             $customer->zip			=	$account->getZipCode();
             $customer->company		=	$account->getOrganization();
-			$customer->pipeliner_id =	$account->getId()
+			$customer->pipeliner_id =	$account->getId();
 			$customer->save();
 			$shopify('PUT','/admin/customers/' . $customer->shopify_id . '.json',array(
 					'customer'	=>	array(
