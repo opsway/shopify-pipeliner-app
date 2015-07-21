@@ -59,9 +59,10 @@
                       {      
                             hideMessages();
                             var result = $.parseJSON(data);
-                            var message = "";
-                            if(result.success == 'true')
+							var message = "";
+                            if(result.success == true)
                             {
+								console.info(result.success);
                                 showMessage('success','<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span><span class="sr-only">OK!</span> Data was synchonized successful');
                             } else
                             {
