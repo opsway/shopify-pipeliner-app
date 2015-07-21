@@ -61,6 +61,7 @@ class AppController extends Controller
 				'orders/create', 
 				'orders/delete', 
 				'orders/updated',
+				'app/uninstalled',
             );
 
             foreach($hooks as $hook)
@@ -91,20 +92,7 @@ class AppController extends Controller
         
 	public function actionUninstalled()
 	{
-		$appSettings = Yii::$app->db->createCommand('SELECT * FROM app_settings')->queryOne();
 		$userSettings = Usersettings::getByParams(['store_name' => $_SERVER['HTTP_X_SHOPIFY_SHOP_DOMAIN']]);
-		
-                
-		$shopify = shopify_api\client(
-				$_SERVER['HTTP_X_SHOPIFY_SHOP_DOMAIN'], $userSettings['access_token'], $appSettings['api_key'], $appSettings['shared_secret']
-		);		
-		
-		$hooks = $shopify('GET', '/admin/webhooks.json');
-		foreach($hooks as $hook)
-		{
-			if($hook['topic'] == 'app/uninstalled')
-				$shopify('DELETE', '/admin/webhooks/' . $hook['id'] . '.json');
-		}
                 
 		if(is_null($userSettings))
 			return false;

@@ -188,7 +188,17 @@ class PipelinerController extends Controller
 			$shopifyProduct = Products::getByParams(['pipeliner_id' => $product->getId()]);
 			if(is_null($shopifyProduct))
 				continue;
-			$shopify('DELETE','/admin/products/' . $shopifyProduct->shopify_id . '.json');
+			else
+			{			
+				$product = $shopify('GET','/admin/products.json',array(
+					'ids' => $shopifyProduct['shopify_id']
+					)
+				);
+
+				if(!empty($product))
+					$shopify('DELETE','/admin/products/' . $shopifyProduct->shopify_id . '.json');
+			}
+
 			$shopifyProduct->delete();
 		}		
 		
