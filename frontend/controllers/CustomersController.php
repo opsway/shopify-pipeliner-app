@@ -56,14 +56,6 @@ class CustomersController extends Controller
         $customer->zip = $result->default_address->zip;
         $customer->company = $result->default_address->company;
 		$pipeliner = Pipeliner::getInstance()->setStore($shop)->getPipeliner();
-		/*$clients = $pipeliner->clients->create();
-		$clients->setDefaultSalesUnitId(0);
-		$clients->setEmail($result->email);
-		$clients->setFirstname($result->first_name);
-		$clients->setLastname($result->last_name);
-		$clients->setMasterRightId('DV-STANDARD_USER');
-		//$clients->setusername($result->email);
-		$pipeliner->clients->save($clients);*/
 		
 		$accounts = $pipeliner->accounts->create();
 		$accounts->setAccountClass(1);
@@ -90,7 +82,9 @@ class CustomersController extends Controller
 		$shop = $_SERVER['HTTP_X_SHOPIFY_SHOP_DOMAIN'];
 		$post = Yii::$app->request->getRawBody();
 		$result = json_decode($post);
-		$customer = Customers::getByParams(['shopify_id' => $result->id]);
+		$customer = Customers::getByParams(['email' => $result->email]);
+		if(empty($customer))
+			$customer = new Customers();
 		$customer->address = $result->default_address->address1;
         $customer->city =  $result->default_address->city;
         $customer->comments = $result->note;
@@ -107,26 +101,30 @@ class CustomersController extends Controller
         $customer->company = $result->default_address->company;
 		$customer->save();
 		$pipeliner = Pipeliner::getInstance()->setStore($shop)->getPipeliner();
-		$accounts = $pipeliner->accounts->getById($customer->pipeliner_id);
-		$accounts->setAccountClass(1);
-		$accounts->setAccountTypeId('DV-1');
-		$accounts->setAddress($result->default_address->address1);
-		$accounts->setCity($result->default_address->city);
-		$accounts->setComments($result->note);
-		$accounts->setCountry($result->default_address->country_name);
-		$accounts->setEmail1($result->email);
-		$accounts->setIndustriesId('PY-7FFFFFFF-33AB019E-EC46-4151-A4F1-72714CC08DAF');
-		$accounts->setOwnerId(27612);
-		$accounts->setPhone1($result->default_address->phone);
-		$accounts->setSalesUnitId(0);
-		$accounts->setOrganization($result->default_address->company);
-		$accounts->setStateProvince($result->default_address->province);
-		$pipeliner->accounts->save($accounts);
+		if(!empty($customer->pipeliner_id))
+		{
+			$accounts = $pipeliner->accounts->getById($customer->pipeliner_id);
+			$accounts->setAccountClass(1);
+			$accounts->setAccountTypeId('DV-1');
+			$accounts->setAddress($result->default_address->address1);
+			$accounts->setCity($result->default_address->city);
+			$accounts->setComments($result->note);
+			$accounts->setCountry($result->default_address->country_name);
+			$accounts->setEmail1($result->email);
+			$accounts->setIndustriesId('PY-7FFFFFFF-33AB019E-EC46-4151-A4F1-72714CC08DAF');
+			$accounts->setOwnerId(27612);
+			$accounts->setPhone1($result->default_address->phone);
+			$accounts->setSalesUnitId(0);
+			$accounts->setOrganization($result->default_address->company);
+			$accounts->setStateProvince($result->default_address->province);
+			$pipeliner->accounts->save($accounts);
+		}
 	}
 	
 	public function actionDelete()
 	{
 		$shop = $_SERVER['HTTP_X_SHOPIFY_SHOP_DOMAIN'];
+		$pipeliner = Pipeliner::getInstance()->setStore($shop)->getPipeliner();
 		$post = Yii::$app->request->getRawBody();
 		$result = json_decode($post);
 		$customer = Customers::getByParams(['shopify_id' => $result->id]);
